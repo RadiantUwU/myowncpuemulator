@@ -21,6 +21,10 @@ typedef unsigned char uchar;
 typedef unsigned short ushort;
 typedef unsigned int uint;
 
+int positive_modulo(int i, int n) {
+  return (i % n + n) % n;
+}
+
 typedef struct TListItem *PListItem;
 struct TListItem {
 public:
@@ -87,14 +91,10 @@ KeyDefsType KeyDefs;
 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
-int positive_modulo(int i, int n) {
-  return (i % n + n) % n;
-};
-
 void clearScreen() {
   lcd.clear();
   lcd.setCursor(0, 0);
-};
+}
 
 void SerialSend(char type[3], char message[], unsigned int length) {
   Serial.print("\x01");
